@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
 {% block title %}Product index{% endblock %}
 
@@ -11,6 +11,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Category</th>
                 <th>Price</th>
                 <th>Amount</th>
                 <th>actions</th>
@@ -22,6 +23,13 @@
                 <td>{{ product.id }}</td>
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
+                <td>
+                    {% for category in product.category %}
+                        {{ category.name }}
+                        {% if not loop.last %}<br>
+                        {% endif %}
+                    {% endfor %}
+                </td>
                 <td>{{ product.price }}</td>
                 <td>{{ product.amount }}</td>
                 <td>
