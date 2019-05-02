@@ -21,7 +21,11 @@
         </tr>
         <tr>
             <th>Category</th>
-            <td>{{ product.category }}</td>
+            <td>{% if product.category.name is defined %}
+                    {{ product.category.name }}
+                {% else %}
+                    Nezadáno
+                {% endif %}</td>
         </tr>
         <tr>
             <th>Price</th>

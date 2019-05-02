@@ -19,12 +19,10 @@ class ProductType extends AbstractType
             ->add('price')
             ->add('amount')
             ->add('category', EntityType::class, [
-                'class'=>Category::class,
-                'choice_label'=>'name',
-                'multiple'=>true,
-                'expanded'=>true,
-            ])
-        ;
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

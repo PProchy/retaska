@@ -17,11 +17,10 @@ class CategoryType extends AbstractType
             ->add('name')
             ->add('products', EntityType::class, [
                 'class' => Product::class,
-                'choice_label'=>'name',
-                'multiple'=>true,
-                'expanded'=>true,
-            ])
-        ;
+                'choice_label' => 'name',
+                'multiple' => true,
+                'expanded' => true,
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)
