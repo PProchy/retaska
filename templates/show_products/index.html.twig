@@ -36,13 +36,20 @@
                     {% for product in products %}
 
                         <div class="col-md-4 border" style="height: 40vh">
-                            <h2 class="title text-center"><a href="/retaska/public/show/products/detail/{{ product.id }}">{{ product.name }}</a>
+                            <h2 class="title text-center"><a
+                                        href="/retaska/public/show/products/detail/{{ product.id }}">{{ product.name }}</a>
                             </h2>
 
                             <div class="price text-danger">
                                 <p>Cena: {{ product.price }} Kč</p>
                             </div>
-                            <a class="add-to-cart" href="">Do košíku</a>
+
+                            <button type="button" class="btn btn-outline-primary"><a class="add-to-cart" href="">Objednat</a>
+                            </button>
+
+                            <button type="button" class="btn btn-outline-primary"><a
+                                        href="/retaska/public/show/products/detail/{{ product.id }}">Zjistit více</a>
+                            </button>
                         </div>
                     {% endfor %}
 
