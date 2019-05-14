@@ -3,19 +3,7 @@
 {% block title %}Hello ShowProductsController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper {
-        margin: 1em auto;
-        max-width: 800px;
-        width: 95%;
-        font: 18px/1.5 sans-serif;
-    }
 
-    .example-wrapper code {
-        background: #F5F5F5;
-        padding: 2px 6px;
-    }
-</style>
 
 <div class="container">
     <h1 align="center">Produkty</h1>
@@ -44,7 +32,7 @@
                                 <p>Cena: {{ product.price }} Kč</p>
                             </div>
 
-                            <button type="button" class="btn btn-outline-primary"><a class="add-to-cart" href="">Objednat</a>
+                            <button type="button" class="btn btn-outline-primary"><a class="add-to-cart" href="{{ path('objednavka', {'id': product.id}) }}">Objednat</a>
                             </button>
 
                             <button type="button" class="btn btn-outline-primary"><a

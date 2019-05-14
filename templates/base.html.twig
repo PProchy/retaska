@@ -1,52 +1,134 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
 
-        <!-- CSS: -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS: -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!-- JS: -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <!-- JS: -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
-        {% block stylesheets %}{% endblock %}
-    </head>
-    <body>
-
-
-        <header>
-
-            <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
-
-                <a class="nav-item active nav-link col-1" href="/retaska/public/homepage"><i class="fa fa-home"></i></a>
-                <a class="nav-item active col-1" href="/retaska/public/show/products">Produkty</a>
-
-            </div>
-
-        </header>
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
 
 
+<header>
 
-        {% block body %}{% endblock %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/retaska/public">REtaška</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <footer class="card-footer text-muted" >
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
 
-            <p align="center">
-                <strong>
-                    © 2019 | Designed by PProchy
-                </strong>
-            </p>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/retaska/public">Home</a>
+                </li>
 
-        </footer>
-
-
+                <li class="nav-item active mr-5">
+                    <a class="nav-link" href="/retaska/public/show/products">Produkty</a>
+                </li>
 
 
-        {% block javascripts %}{% endblock %}
+            </ul>
 
-    </body>
+
+            <form class="form-inline my-2 my-lg-0 mr-3">
+                <input class="form-control mr-sm-2" type="search" placeholder="Hledej" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Hledej</button>
+            </form>
+
+
+            <span class="my-auto mx-1">777 888 999</span>
+
+            <a class="nav-link active" href=""><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+
+
+        </div>
+    </nav>
+
+</header>
+
+
+{% block body %}{% endblock %}
+
+<style>
+
+    .footer {
+
+        position: fixed;
+
+        bottom: 0;
+
+        width: 100%;
+
+        height: 55px;
+
+        background-color: #DFDFDF;
+
+    }
+
+</style>
+
+<footer class="footer bg-light">
+
+
+    <div class="row">
+        <div class="col-md-4">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/retaska/public">REtaška</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/retaska/public">Home</a>
+                        </li>
+
+                        <li class="nav-item active mr-5">
+                            <a class="nav-link" href="/retaska/public/show/products">Produkty</a>
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="col-md-4 my-auto" align="center">© 2019 REtaška</div>
+
+        <div class="col-md-1"></div>
+
+
+        <div class="col-md-2 my-auto">
+            <a href="mailto:#">exam.ple@example.com</a>
+        </div>
+
+        <div class="col-md-1 my-auto"><i class="fa fa-heart-o" aria-hidden="true"></i></div>
+
+
+    </div>
+
+</footer>
+
+
+{% block javascripts %}{% endblock %}
+
+</body>
 </html>

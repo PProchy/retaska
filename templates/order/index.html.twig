@@ -1,20 +1,59 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseadmin.html.twig' %}
 
-{% block title %}Hello OrderController!{% endblock %}
+{% block title %}Order index{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Order index</h1>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Telefon</th>
+                <th>Jmeno</th>
+                <th>Prijmeni</th>
+                <th>Ulice</th>
+                <th>Cp</th>
+                <th>Mesto</th>
+                <th>Psc</th>
+                <th>Poznamka</th>
+                <th>CelkovaCena</th>
+                <th>Product</th>
+                <th>Ks</th>
+                <th>Stav</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>{{ order.id }}</td>
+                <td>{{ order.email }}</td>
+                <td>{{ order.telefon }}</td>
+                <td>{{ order.jmeno }}</td>
+                <td>{{ order.prijmeni }}</td>
+                <td>{{ order.ulice }}</td>
+                <td>{{ order.cp }}</td>
+                <td>{{ order.mesto }}</td>
+                <td>{{ order.psc }}</td>
+                <td>{{ order.poznamka }}</td>
+                <td>{{ order.celkovaCena }}</td>
+                <td>{{ order.product }}</td>
+                <td>{{ order.ks }}</td>
+                <td>{{ order.stav }}</td>
+                <td>
+                    <a href="{{ path('order_show', {'id': order.id}) }}">show</a>
+                    <a href="{{ path('order_edit', {'id': order.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="15">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/retaska/src/Controller/OrderController.php'|file_link(0) }}">src/Controller/OrderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/retaska/templates/order/index.html.twig'|file_link(0) }}">templates/order/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <a href="{{ path('order_new') }}">Create new</a>
 {% endblock %}
