@@ -43,7 +43,7 @@ class DetailProductController extends AbstractController
             $entityManager->flush();
             return $this->redirectToRoute('thankyou.html.twig');
         }
-        return $this->render('order/new.html.twig', [
+        return $this->render('order/newbase.html.twig', [
             'objednavka' => $objednavka,
             'form' => $form->createView(),
             'product' => $product,

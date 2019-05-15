@@ -1,53 +1,74 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ShowProductsController!{% endblock %}
+{% block title %}Produkty{% endblock %}
 
 {% block body %}
 
 
-<div class="container">
-    <h1 align="center">Produkty</h1>
 
     <div class="container">
+        <h1 align="center" class="my-4">Seznam produktů</h1>
+
+        <div class="container my-2">
 
 
-        <div class="row">
-
-            <div class="col-1"></div>
-
-
-            <div class="col-md-10">
-
-                <div class="row">
-
-
-                    {% for product in products %}
-
-                        <div class="col-md-4 border" style="height: 40vh">
-                            <h2 class="title text-center"><a
-                                        href="/retaska/public/show/products/detail/{{ product.id }}">{{ product.name }}</a>
-                            </h2>
-
-                            <div class="price text-danger">
-                                <p>Cena: {{ product.price }} Kč</p>
-                            </div>
-
-                            <button type="button" class="btn btn-outline-primary"><a class="add-to-cart" href="{{ path('objednavka', {'id': product.id}) }}">Objednat</a>
-                            </button>
-
-                            <button type="button" class="btn btn-outline-primary"><a
-                                        href="/retaska/public/show/products/detail/{{ product.id }}">Zjistit více</a>
-                            </button>
-                        </div>
-                    {% endfor %}
-
-                </div>
+            <div class="row">
 
                 <div class="col-1"></div>
 
+
+                <div class="col-md-10">
+
+                    <div class="row">
+
+
+                        {% for product in products %}
+
+                            <div class="col-md-3 border border-dark mx-4 px-1 my-2" style="height: 20rem">
+
+
+                                <h2 class="title text-center px-1 my-1 no-gutters" style="height: 2rem"><a
+                                            href="/retaska/public/show/products/detail/{{ product.id }}">{{ product.name }}</a>
+                                </h2>
+
+                                <hr>
+
+                                <img class="rounded mx-auto d-block" alt="taška" style="height: 5rem"
+                                     src="https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRoWFFBCsLjHKMsotYOA6Oc_uW2nu2sVNy9EqalxGNnqqnsFFweHtR_7h60qWlHFXYrtMmZDCbbmFkBqlYklaMZ9niodRYEyrtZZ6Qp5YD9WvKg2Kjgc6clE2I&usqp=CAc">
+
+                                <hr>
+
+                                <div class="price text-danger text-center my-auto" style="height: 2rem">
+                                    <p>Cena: {{ product.price }} Kč</p>
+                                </div>
+
+                                <hr>
+
+                                <div align="center" style="height: 3rem">
+
+                                    <button type="button" class="btn btn-outline-primary"><a class="add-to-cart"
+                                                                                             href="{{ path('objednavka', {'id': product.id}) }}">Koupit</a>
+                                    </button>
+
+                                    <button type="button" class="btn btn-outline-primary"><a
+                                                href="/retaska/public/show/products/detail/{{ product.id }}">Zjistit
+                                            více</a>
+                                    </button>
+
+                                </div>
+
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                    <div class="col-1"></div>
+
+                </div>
             </div>
         </div>
     </div>
 
 
-    {% endblock %}
+{% endblock %}

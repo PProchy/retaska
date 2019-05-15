@@ -20,7 +20,7 @@
 
 <header>
 
-    <div class="nav navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="navbar navbar-expand-lg navbar-dark bg-dark">
 
         <a class="nav-item active col-1" href="/retaska/public/admin/product">Produkty</a>
         <a class="nav-item active col-1" href="/retaska/public/admin/category">Kategorie</a>
@@ -36,11 +36,29 @@
 
 {% block body %}{% endblock %}
 
-<footer class="card-footer text-muted fixed-bottom">
+<style>
+
+    .footer {
+
+        position: relative;
+
+        bottom: 0;
+
+        width: 100%;
+
+        height: 55px;
+
+        background-color: #DFDFDF;
+
+    }
+
+</style>
+
+<footer class="card-footer footer text-muted mt-2 py-auto">
 
     <p align="center">
         <strong>
-            © 2019 | Designed by PProchy
+            © 2019 | REtaška Administrace
         </strong>
     </p>
 

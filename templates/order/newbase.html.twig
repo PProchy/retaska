@@ -1,0 +1,184 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Order{% endblock %}
+
+{% block body %}
+
+
+
+
+    <div class="row">
+
+        <div class="col-2"></div>
+
+        <div class="col-6 my-4">
+
+            <h1 class="text-center">Nová objednávka: {{ product.name }}</h1>
+
+            {{ form_start(form) }}
+
+
+            <table class="table">
+                <tbody>
+
+                <tr>
+                    <td>Počet kusů</td>
+                    <td> {{ form_widget(form.ks) }}
+                        {{ form_errors(form.ks) }}</td>
+                </tr>
+
+                <tr>
+                    <td><h2>1) Osobní údaje</h2></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Jméno</td>
+                    <td> {{ form_widget(form.jmeno) }}
+                        {{ form_errors(form.jmeno) }}</td>
+                </tr>
+                <tr>
+                    <td>Příjmení</td>
+                    <td> {{ form_widget(form.prijmeni) }}
+                        {{ form_errors(form.prijmeni) }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td> {{ form_widget(form.email) }}
+                        {{ form_errors(form.email) }}</td>
+                </tr>
+                <tr>
+                    <td>Telefon</td>
+                    <td> {{ form_widget(form.telefon) }}
+                        {{ form_errors(form.telefon) }}</td>
+                </tr>
+
+                <tr>
+                    <td><h2>2) Adresa</h2></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Ulice</td>
+                    <td> {{ form_widget(form.ulice) }}
+                        {{ form_errors(form.ulice) }}</td>
+                </tr>
+                <tr>
+                    <td>ČP</td>
+                    <td> {{ form_widget(form.cp) }}
+                        {{ form_errors(form.cp) }}</td>
+                </tr>
+                <tr>
+                    <td>Město</td>
+                    <td> {{ form_widget(form.mesto) }}
+                        {{ form_errors(form.mesto) }}</td>
+                </tr>
+                <tr>
+                    <td>PSČ</td>
+                    <td> {{ form_widget(form.psc) }}
+                        {{ form_errors(form.psc) }}</td>
+                </tr>
+                <tr>
+                    <td>Země</td>
+                    <td> {{ form_widget(form.zeme) }}
+                        {{ form_errors(form.zeme) }}</td>
+                </tr>
+
+                <tr>
+                    <td><h2>3) Způsob dopravy</h2></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Doprava</td>
+                    <td> {{ form_widget(form.doprava) }}
+                        {{ form_errors(form.doprava) }}</td>
+                </tr>
+
+                <tr>
+                    <td><h2>4) Způsob platby</h2></td>
+                    <td></td>
+                </tr>
+
+                <tr>
+                    <td>Doprava</td>
+                    <td> {{ form_widget(form.platba) }}
+                        {{ form_errors(form.platba) }}</td>
+                </tr>
+
+                <tr>
+                    <td>Poznámka</td>
+                    <td> {{ form_widget(form.poznamka) }}
+                        {{ form_errors(form.poznamka) }}</td>
+                </tr>
+
+                </tbody>
+            </table>
+
+
+            <button class="btn btn-success m-auto">{{ button_label|default('Potvrdit objednávku') }}</button>
+
+            {{ form_end(form) }}
+
+
+        </div>
+
+        <div class="col-4">
+
+            <div class="row">
+
+                <div class="col"></div>
+
+                <div class="col-6">
+
+                    <div class="container my-4 border border-dark rounded" style="background: olivedrab">
+
+                        <h3 class="text-center">Souhrn</h3>
+                        <hr>
+
+                        <p>Cena za kus: {{ product.price }} Kč</p>
+
+                        <p>Počet kusů:</p>
+
+                        <p>Doručení:</p>
+
+                        <p>Platba:</p>
+
+                        <hr>
+
+                        <span></span>
+
+                        <p>Celkový cena:</p>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col"></div>
+
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascripts %}
+    <script>
+        function myFunction() { ...
+        }
+
+        $(document).ready(function () {
+            myFunction();
+        });
+    </script>
+{% endblock %}

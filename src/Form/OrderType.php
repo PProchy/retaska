@@ -30,17 +30,17 @@ class OrderType extends AbstractType
             ->add('zeme', EntityType::class, [
                 'class' => Country::class,
                 'choice_label' => 'name',
-                'expanded' => true,
+
             ])
             ->add('doprava', EntityType::class, [
                 'class' => Transport::class,
                 'choice_label' => 'name',
-                'expanded' => true,
+
             ])
             ->add('platba', EntityType::class, [
                 'class' => Payment::class,
                 'choice_label' => 'name',
-                'expanded' => true,
+
             ])
 
         ;
