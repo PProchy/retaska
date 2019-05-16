@@ -36,10 +36,20 @@ class OrderType extends AbstractType
                 'class' => Transport::class,
                 'choice_label' => 'name',
 
+                'choice_attr' => function(Transport $transport) {
+                    return ['data-transport' => $transport->getPrice()];
+                }
+
+
             ])
             ->add('platba', EntityType::class, [
                 'class' => Payment::class,
                 'choice_label' => 'name',
+
+                'choice_attr' => function(Payment $payment) {
+                    return ['data-payment' => $payment->getPrice()];
+                }
+
 
             ])
 

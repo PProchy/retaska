@@ -21,9 +21,14 @@
             <table class="table">
                 <tbody>
 
+                {#<tr><td>Co si přejete objednat?</td>
+            <td>{{ form_widget(form.product) }}<br>
+                {{ form_errors(form.product) }}</td>
+        </tr>#}
+
                 <tr>
                     <td>Počet kusů</td>
-                    <td> {{ form_widget(form.ks) }}
+                    <td><span id="pocetKusu">{{ form_widget(form.ks) }}</span>
                         {{ form_errors(form.ks) }}</td>
                 </tr>
 
@@ -138,17 +143,17 @@
 
                         <p>Cena za kus: {{ product.price }} Kč</p>
 
-                        <p>Počet kusů:</p>
+                        <p>Počet kusů:<span id="pocet"></span></p>
 
-                        <p>Doručení:</p>
+                        <p>Doručení: <span id="doprava"></span></p>
 
-                        <p>Platba:</p>
+                        <p>Platba:<span id="platba"></span></p>
 
                         <hr>
 
                         <span></span>
 
-                        <p>Celkový cena:</p>
+                        <p>Celkový cena:<span id="celkovaCena"> </span></p>
 
 
                     </div>
@@ -174,11 +179,23 @@
 
 {% block javascripts %}
     <script>
-        function myFunction() { ...
-        }
 
-        $(document).ready(function () {
-            myFunction();
-        });
+        $('#order_count').on('change', function (e) {
+            e.preventDefault();
+
+            let count = $('#order_count').val();
+            console.log(count);
+
+        })
+
+        $('#order_transport').on('change', function (e) {
+            e.preventDefault();
+
+            let cenaDoprava = parseInt($('#order_transport option:selected').attr('data-transport'));
+            console.log(data - transport);
+
+        })
+
+
     </script>
 {% endblock %}

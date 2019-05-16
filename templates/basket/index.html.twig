@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Košík{% endblock %}
+
+{% block body %}
+
+    <div class="row" style="width: 100%;min-height: 35rem">
+
+        <div class="col"></div>
+
+        <div class="col-6">
+
+            <h1 class="text-center">Košík</h1>
+
+            <table class="table">
+
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Produkt ID</th>
+                    <th scope="col">Název</th>
+                    <th scope="col">Cena</th>
+                    <th scope="col">Počet</th>
+                    <th scope="col">Přidat</th>
+                    <th scope="col">Odebrat</th>
+                </tr>
+                </thead>
+
+                <tbody>
+
+                {% for item in basket %}
+
+                    <tr>
+
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.price }}</td>
+                        <td>{{ item.amount }}</td>
+                        <td><a href="{{ path('basket_plus', {'id': item.id}) }}"><button class="btn btn-success">+</button></a></td>
+                        <td><a href="{{ path('basket_minus', {'id': item.id}) }}"><button class="btn btn-danger">-</button></a></td>
+
+
+                    </tr>
+
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+        </div>
+
+        <div class="col"></div>
+
+
+    </div>
+
+
+
+{% endblock %}
