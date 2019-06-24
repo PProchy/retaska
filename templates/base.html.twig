@@ -52,13 +52,15 @@
 
             <form class="form-inline my-2 my-lg-0 mr-3">
                 <input class="form-control mr-sm-2" type="search" placeholder="Hledej" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Hledej</button>
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a {{ path('show_products') }}>Hledej</a></button>
+
             </form>
 
 
             <span class="my-auto mx-1">777 888 999</span>
 
-            <a class="nav-link active" href="{{ path('basket') }}"><i class="fa fa-shopping-basket" aria-hidden="true"></i></a>
+            <a class="nav-link active" href="{{ path('basket') }}"><i class="fa fa-shopping-basket"
+                                                                      aria-hidden="true"></i></a>
 
 
         </div>
@@ -67,31 +69,34 @@
 </header>
 
 
-
-
 {% block body %}{% endblock %}
-
 
 
 <style>
 
-    .footer {
+    html {
+        height: 100%;
+        box-sizing: border-box;
+    }
 
+    body {
         position: relative;
+        margin: 0;
+        min-height: 100%;
 
+    }
+
+
+    .footer {
+        position: absolute;
+        right: 0;
         bottom: 0;
-
-        width: 100%;
-
-        height: 55px;
-
-        background-color: #DFDFDF;
-
+        left: 0;
     }
 
 </style>
 
-<div class="page-footer bg-light">
+<div class="page-footer bg-light footer">
 
 
     <div class="row" style="width: 100%">
@@ -118,8 +123,6 @@
                         <li class="nav-item active">
                             <a class="nav-link" href="/retaska/public/login">Administrace</a>
                         </li>
-
-
 
 
                     </ul>

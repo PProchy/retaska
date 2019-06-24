@@ -14,7 +14,20 @@
 
             <div class="row">
 
-                <div class="col-1"></div>
+                <div class="col">
+
+                    <strong>Kategorie:</strong><br>
+
+                    {% for item in category %}
+
+                        <a href="{{ path('kategorie', {('id'): item.id}) }}"
+                           class="btn btn-secondary my-2">{{ item.name }}</a><br>
+
+
+                    {% endfor %}
+
+
+                </div>
 
 
                 <div class="col-md-10">
@@ -24,10 +37,12 @@
 
                         {% for product in products %}
 
-                            <div class="col-md-3 border border-dark mx-4 px-1 my-2" style="height: 20rem">
 
 
-                                <h2 class="title text-center px-1 my-1 no-gutters" style="height: 2rem"><a
+                            <div class="col-md-3 border border-dark mx-4 px-1 my-2 rounded">
+
+
+                                <h2 class="title text-center px-1 my-1 no-gutters"><a
                                             href="/retaska/public/show/products/detail/{{ product.id }}">{{ product.name }}</a>
                                 </h2>
 
@@ -38,22 +53,32 @@
 
                                 <hr>
 
-                                <div class="price text-danger text-center my-auto" style="height: 2rem">
+                                <div class="price text-danger text-center my-auto">
                                     <p>Cena: {{ product.price }} Kč</p>
                                 </div>
 
                                 <hr>
 
-                                <div align="center" style="height: 3rem">
+                                <div class="row mb-2">
 
-                                    <button type="button" class="btn btn-outline-primary"><a class="add-to-cart"
-                                                                                             href="{{ path('basket_add', {'id': product.id}) }}">Přidat do košíku</a>
-                                    </button>
+                                    <div class="col-6">
 
-                                    <button type="button" class="btn btn-outline-primary"><a
-                                                href="/retaska/public/show/products/detail/{{ product.id }}">Zjistit
-                                            více</a>
-                                    </button>
+                                        <button class="btn btn-outline-primary mx-1"><a class="add-to-cart"
+                                                                                        href="{{ path('basket_add', {'id': product.id}) }}">Do
+                                                košíku</a>
+                                        </button>
+
+                                    </div>
+
+                                    <div class="col-6">
+
+                                        <button class="btn btn-outline-primary"><a
+                                                    href="/retaska/public/show/products/detail/{{ product.id }}">Zjistit
+                                                více</a>
+                                        </button>
+
+                                    </div>
+
 
                                 </div>
 

@@ -22,6 +22,7 @@
                     <th scope="col">Počet</th>
                     <th scope="col">Přidat</th>
                     <th scope="col">Odebrat</th>
+                    <th scope="col">Celkem</th>
                 </tr>
                 </thead>
 
@@ -37,6 +38,7 @@
                         <td>{{ item.amount }}</td>
                         <td><a href="{{ path('basket_plus', {'id': item.id}) }}"><button class="btn btn-success">+</button></a></td>
                         <td><a href="{{ path('basket_minus', {'id': item.id}) }}"><button class="btn btn-danger">-</button></a></td>
+
 
 
                     </tr>
