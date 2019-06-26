@@ -33,9 +33,15 @@ class Payment
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="payment")
+     */
+    private $ordersNew;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->ordersNew = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class Payment
             // set the owning side to null (unless already changed)
             if ($order->getPlatba() === $this) {
                 $order->setPlatba(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Orders[]
+     */
+    public function getOrdersNew(): Collection
+    {
+        return $this->ordersNew;
+    }
+
+    public function addOrdersNew(Orders $ordersNew): self
+    {
+        if (!$this->ordersNew->contains($ordersNew)) {
+            $this->ordersNew[] = $ordersNew;
+            $ordersNew->setPayment($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdersNew(Orders $ordersNew): self
+    {
+        if ($this->ordersNew->contains($ordersNew)) {
+            $this->ordersNew->removeElement($ordersNew);
+            // set the owning side to null (unless already changed)
+            if ($ordersNew->getPayment() === $this) {
+                $ordersNew->setPayment(null);
             }
         }
 

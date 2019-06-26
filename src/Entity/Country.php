@@ -33,9 +33,15 @@ class Country
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="country")
+     */
+    private $ordersNew;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->ordersNew = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class Country
             // set the owning side to null (unless already changed)
             if ($order->getZeme() === $this) {
                 $order->setZeme(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Orders[]
+     */
+    public function getOrdersNew(): Collection
+    {
+        return $this->ordersNew;
+    }
+
+    public function addOrdersNew(Orders $ordersNew): self
+    {
+        if (!$this->ordersNew->contains($ordersNew)) {
+            $this->ordersNew[] = $ordersNew;
+            $ordersNew->setCountry($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrdersNew(Orders $ordersNew): self
+    {
+        if ($this->ordersNew->contains($ordersNew)) {
+            $this->ordersNew->removeElement($ordersNew);
+            // set the owning side to null (unless already changed)
+            if ($ordersNew->getCountry() === $this) {
+                $ordersNew->setCountry(null);
             }
         }
 

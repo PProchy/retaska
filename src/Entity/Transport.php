@@ -33,9 +33,15 @@ class Transport
      */
     private $orders;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="transport")
+     */
+    private $orderNew;
+
     public function __construct()
     {
         $this->orders = new ArrayCollection();
+        $this->orderNew = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -92,6 +98,37 @@ class Transport
             // set the owning side to null (unless already changed)
             if ($order->getDoprava() === $this) {
                 $order->setDoprava(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Orders[]
+     */
+    public function getOrderNew(): Collection
+    {
+        return $this->orderNew;
+    }
+
+    public function addOrderNew(Orders $orderNew): self
+    {
+        if (!$this->orderNew->contains($orderNew)) {
+            $this->orderNew[] = $orderNew;
+            $orderNew->setTransport($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrderNew(Orders $orderNew): self
+    {
+        if ($this->orderNew->contains($orderNew)) {
+            $this->orderNew->removeElement($orderNew);
+            // set the owning side to null (unless already changed)
+            if ($orderNew->getTransport() === $this) {
+                $orderNew->setTransport(null);
             }
         }
 

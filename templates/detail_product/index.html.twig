@@ -29,8 +29,9 @@
                 </tbody>
             </table>
 
-            <button type="button" class="btn btn-outline-primary m-auto"><a class="add-to-cart"
-                                                                     href="{{ path('objednavka', {'id': product.id}) }}">Koupit</a>
+            <button class="btn btn-outline-primary mx-1"><a class="add-to-cart"
+                                                            href="{{ path('basket_add', {'id': product.id}) }}">Do
+                    košíku</a>
             </button>
 
 
