@@ -16,9 +16,9 @@
 
                 <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Produkt ID</th>
+
                     <th scope="col">Název</th>
-                    <th scope="col">Cena</th>
+                    <th scope="col">Cena za kus</th>
                     <th scope="col">Počet</th>
                     <th scope="col">Přidat</th>
                     <th scope="col">Odebrat</th>
@@ -32,13 +32,16 @@
 
                     <tr>
 
-                        <td>{{ item.id }}</td>
+
                         <td>{{ item.name }}</td>
                         <td>{{ item.price }}</td>
                         <td>{{ item.amount }}</td>
-                        <td><a href="{{ path('basket_plus', {'id': item.id}) }}"><button class="btn btn-success">+</button></a></td>
-                        <td><a href="{{ path('basket_minus', {'id': item.id}) }}"><button class="btn btn-danger">-</button></a></td>
-
+                        <td><a href="{{ path('basket_plus', {'id': item.id}) }}">
+                                <button class="btn btn-success">+</button>
+                            </a></td>
+                        <td><a href="{{ path('basket_minus', {'id': item.id}) }}">
+                                <button class="btn btn-danger">-</button>
+                            </a></td>
 
 
                     </tr>
@@ -46,10 +49,36 @@
 
                 {% endfor %}
                 </tbody>
+
             </table>
 
 
+            <div class="row">
+
+                <div class="col-6" align="left">
+
+                    <button class="btn btn-outline-primary"><a
+                                href="/retaska/public/show/products/">Pokračovat v nákupu</a>
+                    </button>
+
+
+                </div>
+
+                <div class="col-6" align="right">
+
+                    <button class="btn btn-outline-primary"><a
+                                href="/retaska/public/show/products/">Přejít k objednávce</a>
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+
         </div>
+
 
         <div class="col"></div>
 
