@@ -73,7 +73,6 @@
                     </tr>
 
 
-
                     <tr>
                         <td><h3>Doprava</h3></td>
                         <td> {{ form_widget(form.transport) }}
@@ -81,13 +80,11 @@
                     </tr>
 
 
-
                     <tr>
                         <td><h3>Platba</h3></td>
                         <td> {{ form_widget(form.payment) }}
                             {{ form_errors(form.payment) }}</td>
                     </tr>
-
 
 
                     <tr>
@@ -107,54 +104,104 @@
                     {{ form_end(form) }}
 
 
-
                 </div>
 
             </div>
 
-            <div class="col-4">
+            <div class="col-4 my-4">
 
                 <div class="row">
 
-                    <div class="col"></div>
+                    <div class="col">
 
-                    <div class="col-6">
+                        <table class="table table-sm border table-fluid">
 
-                        <div class="container my-4 border border-dark rounded" style="background: olivedrab">
+                            <thead>
 
-                            <h3 class="text-center">Souhrn</h3>
-                            <hr>
+                            <tr>
+                                <td>Souhrn</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
 
-                            <p>Cena za kus: Kč</p>
+                            </thead>
 
-                            <p>Počet kusů:<span id="pocet"></span></p>
+                            {% for item in order.products %}
+                                <tr>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.price }} Kč</td>
+                                    <td>{{ item.amount }} ks</td>
+                                    <td><span class="total_product">{{ item.amount * item.price }}</span> Kč</td>
 
-                            <p>Doručení: <span id="doprava"></span></p>
-
-                            <p>Platba:<span id="platba"></span></p>
-
-                            <hr>
-
-                            <span></span>
-
-                            <p>Celkový cena:<span id="celkovaCena"> </span></p>
+                                </tr>
+                            {% endfor %}
 
 
-                        </div>
+                            <tr>
+                                <td colspan="3"><span id="payment_nazev"></span></td>
+                                <td><span id="payment_price2"></span> Kč</td>
+                            </tr>
+                            <tr>
+                                <td>Doprava</td>
+                                <td colspan="2"><span id="transport_nazev"></span></td>
+                                <td><span id="transport_price2"></span> Kč</td>
+                            </tr>
+                            <tr class="">
+                                <td colspan="3" style="font-weight: bold">K úhradě</td>
+                                <td style="font-weight: bold"><span id="finalnicena"></span> Kč</td>
+                            </tr>
 
+                        </table>
 
                     </div>
-
-                    <div class="col"></div>
 
 
                 </div>
 
-            </div>
 
+            </div>
 
         </div>
 
+
     </div>
+
+    </div>
+
+
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script>
+        let sumPrice = 0;
+        $('.total_product').each(function () {
+            sumPrice += parseInt($(this).text());
+        });
+        let totalPriceProducts = sumPrice;
+
+        function updatePrice() {
+            let transport = parseInt($('#order_transport option:selected').attr('data-transport'));
+            let payment = parseInt($('#order_payment option:selected').attr('data-payment'));
+            let total = totalPriceProducts + payment + transport;
+            $('#payment_price1').text(payment);
+            $('#shipping_price1').text(transport);
+            $('#payment_price2').text(payment);
+            $('#shipping_price2').text(transport);
+            $('#payment_nazev').text($('#order_payment option:selected').text());
+            $('#transport_nazev').text($('#order_transport option:selected').text());
+            $('#finalnicena').text(total);
+        }
+
+        $(document).ready(function () {
+            updatePrice();
+        });
+        $('#order_payment, #order_transport').on('change', function (e) {
+            updatePrice()
+        });
+
+    </script>
 
 {% endblock %}
