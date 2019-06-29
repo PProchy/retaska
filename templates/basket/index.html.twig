@@ -4,71 +4,99 @@
 
 {% block body %}
 
-    <div class="row" style="width: 100%;min-height: 35rem">
+    {% if basket is empty %}
 
-        <div class="col"></div>
 
-        <div class="col-6">
+        <div class="container my-5" align="center">
 
-            <h1 class="text-center">Košík</h1>
+            <h3>Jsem tak prázdný...</h3>
 
-            <table class="table">
+            <p>
+                <a href="{{ path('show_products') }}" class="btn btn-outline-info mt-2">Zobrazit produkty</a>
+            </p>
 
-                <thead class="thead-dark">
-                <tr>
+        </div>
 
-                    <th scope="col">Název</th>
-                    <th scope="col">Cena za kus</th>
-                    <th scope="col">Počet</th>
-                    <th scope="col">Přidat</th>
-                    <th scope="col">Odebrat</th>
-                    <th scope="col">Celkem</th>
-                </tr>
-                </thead>
+    {% else %}
 
-                <tbody>
+        <div class="row" style="width: 100%;min-height: 35rem">
 
-                {% for item in basket %}
+            <div class="col"></div>
 
+            <div class="col-6">
+
+                <h1 class="text-center">Košík</h1>
+
+                <table class="table">
+
+                    <thead class="thead-dark">
                     <tr>
 
-
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.price }}</td>
-                        <td>{{ item.amount }}</td>
-                        <td><a href="{{ path('basket_plus', {'id': item.id}) }}">
-                                <button class="btn btn-success">+</button>
-                            </a></td>
-                        <td><a href="{{ path('basket_minus', {'id': item.id}) }}">
-                                <button class="btn btn-danger">-</button>
-                            </a></td>
-
-
+                        <th scope="col">Název</th>
+                        <th scope="col">Cena za kus</th>
+                        <th scope="col">Počet</th>
+                        <th scope="col">Přidat</th>
+                        <th scope="col">Odebrat</th>
+                        <th scope="col">Celkem</th>
                     </tr>
+                    </thead>
+
+                    <tbody>
+
+                    {% for item in basket %}
+
+                        <tr>
 
 
-                {% endfor %}
-                </tbody>
-
-            </table>
-
-
-            <div class="row">
-
-                <div class="col-6" align="left">
-
-                    <button class="btn btn-outline-primary"><a
-                                href="/retaska/public/show/products/">Pokračovat v nákupu</a>
-                    </button>
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.price }}</td>
+                            <td>{{ item.amount }}</td>
+                            <td><a href="{{ path('basket_plus', {'id': item.id}) }}">
+                                    <button class="btn btn-success">+</button>
+                                </a></td>
+                            <td><a href="{{ path('basket_minus', {'id': item.id}) }}">
+                                    <button class="btn btn-danger">-</button>
+                                </a></td>
 
 
-                </div>
+                        </tr>
 
-                <div class="col-6" align="right">
 
-                    <button class="btn btn-outline-primary"><a
-                                href="/retaska/public/show/products/">Přejít k objednávce</a>
-                    </button>
+                    {% endfor %}
+                    </tbody>
+
+                </table>
+
+
+                <div class="row">
+
+                    <div class="col-4" align="left">
+
+                        <button class="btn btn-outline-primary"><a
+                                    href="{{ path('show_products') }}">Pokračovat v nákupu</a>
+                        </button>
+
+
+                    </div>
+
+                    <div class="col-4" align="center">
+
+                        <button class="btn btn-outline-primary"><a
+                                    href="{{ path('basket_clear') }}">Vyprázdnit košík</a>
+                        </button>
+
+
+                    </div>
+
+
+                    <div class="col-4" align="right">
+
+                        <button class="btn btn-outline-primary"><a
+                                    href="{{ path('show_products') }}">Přejít k objednávce</a>
+                        </button>
+
+
+                    </div>
 
 
                 </div>
@@ -77,13 +105,12 @@
             </div>
 
 
+            <div class="col"></div>
+
+
         </div>
 
-
-        <div class="col"></div>
-
-
-    </div>
+    {% endif %}
 
 
 

@@ -73,4 +73,15 @@ class BasketController extends AbstractController
 
         return $this->redirectToRoute('basket');
     }
+
+    /**
+     * @Route("/basket-empty/", name="basket_clear")
+     */
+    public function clearBasket(SessionInterface $session)
+    {
+        $basket = [];
+        $session->set('basket', $basket);
+        return $this->redirectToRoute('basket', [
+        ]);
+    }
 }
