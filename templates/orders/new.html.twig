@@ -5,7 +5,7 @@
 {% block body %}
     {{ form_start(form) }}
 
-    <div style="max-width: 100%">
+    <div class="container">
         <div class="row">
 
             <div class="col-2"></div>
@@ -110,53 +110,56 @@
 
             <div class="col-4 my-4">
 
-                <div class="row">
+                <div class="container">
 
-                    <div class="col">
+                    <div class="row">
 
-                        <table class="table table-sm border table-fluid">
+                        <div class="col">
 
-                            <thead>
+                            <table class="table table-sm border border-dark rounded">
 
-                            <tr>
-                                <td>Souhrn</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                                <thead>
 
-                            </thead>
-
-                            {% for item in order.products %}
                                 <tr>
-                                    <td>{{ item.name }}</td>
-                                    <td>{{ item.price }} Kč</td>
-                                    <td>{{ item.amount }} ks</td>
-                                    <td><span class="total_product">{{ item.amount * item.price }}</span> Kč</td>
-
+                                    <td class="font-weight-bold">Souhrn</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
-                            {% endfor %}
+
+                                </thead>
+
+                                {% for item in order.products %}
+                                    <tr>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.price }} Kč</td>
+                                        <td>{{ item.amount }} ks</td>
+                                        <td>{{ item.total }} Kč</td>
+
+                                    </tr>
+                                {% endfor %}
 
 
-                            <tr>
-                                <td colspan="3"><span id="payment_nazev"></span></td>
-                                <td><span id="payment_price2"></span> Kč</td>
-                            </tr>
-                            <tr>
-                                <td>Doprava</td>
-                                <td colspan="2"><span id="transport_nazev"></span></td>
-                                <td><span id="transport_price2"></span> Kč</td>
-                            </tr>
-                            <tr class="">
-                                <td colspan="3" style="font-weight: bold">K úhradě</td>
-                                <td style="font-weight: bold"><span id="finalnicena"></span> Kč</td>
-                            </tr>
+                                <tr>
+                                    <td colspan="3"><span id="payment_nazev"></span></td>
+                                    <td><span id="payment_price2"></span> Kč</td>
+                                </tr>
+                                <tr>
+                                    <td>Doprava</td>
+                                    <td colspan="2"><span id="transport_nazev"></span></td>
+                                    <td><span id="transport_price2"></span> Kč</td>
+                                </tr>
+                                <tr class="table-dark">
+                                    <td colspan="3" style="font-weight: bold">K úhradě</td>
+                                    <td style="font-weight: bold"><span id="finalnicena"></span> Kč</td>
+                                </tr>
 
-                        </table>
+                            </table>
+
+                        </div>
+
 
                     </div>
-
-
                 </div>
 
 

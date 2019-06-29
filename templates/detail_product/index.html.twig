@@ -4,45 +4,57 @@
 
 {% block body %}
 
-    <div class="row mb-5 text-center">
-        <div class="col-md-3"></div>
+    <div class="container">
 
-        <div class="col-md-6 container">
-
-            <h1 class="my-3 text-center">{{ product.name }}</h1>
-
-            <table class="table my-5">
-                <tbody>
-
-                <tr>
-                    <th>Popis</th>
-                    <td>{{ product.description }}</td>
-                </tr>
-                <tr>
-                    <th>Cena</th>
-                    <td>{{ product.price }} Kč</td>
-                </tr>
-                <tr>
-                    <th>Zboží na skladě</th>
-                    <td>{{ product.amount }}</td>
-                </tr>
-                </tbody>
-            </table>
-
-            <button class="btn btn-outline-primary mx-1"><a class="add-to-cart"
-                                                            href="{{ path('basket_add', {'id': product.id}) }}">Do
-                    košíku</a>
-            </button>
+        <div class="row">
 
 
+            <div class="col-3"></div>
 
+            <div class="col-6 text-center">
+
+
+                <h1 class="my-3 text-center">{{ product.name }}</h1>
+
+                <table class="table my-5">
+                    <tbody>
+
+                    <tr>
+                        <th>Popis</th>
+                        <td>{{ product.description }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cena</th>
+                        <td>{{ product.price }} Kč</td>
+                    </tr>
+                    <tr>
+                        <th>Dostupnost</th>
+                        {% if product.amount > 5 %}
+                        <td style="color: green"> Skladem > 5 ks</td>
+                        {% elseif product.amount > 0 %}
+                            <td style="color: green"> Skladem {{ product.amount }} ks</td>
+                        {% else %}
+                            <td style="color: red"> Není skladem</td>
+                        {% endif %}
+                    </tr>
+                    </tbody>
+                </table>
+
+                <button class="btn btn-outline-primary mx-1"><a class="add-to-cart"
+                                                                href="{{ path('basket_add', {'id': product.id}) }}">Do
+                        košíku</a>
+                </button>
+
+
+            </div>
+
+            <div class="col-3"></div>
 
         </div>
 
-        <div class="col-md-3"></div>
-
-
     </div>
+
+
 
 
 
