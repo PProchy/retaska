@@ -26,7 +26,9 @@
         {% for order in orders %}
             <tr>
                 <td>{{ order.id }}</td>
-                <td>{{ order.products ? order.products|join(', ') : '' }}</td>
+                <td>{% for item in order.products %}
+                        {{ item.name }}, {{ item.amount }} ks<br>
+                    {% endfor %}</td>
                 <td>{{ order.name }}</td>
                 <td>{{ order.surname }}</td>
                 <td>{{ order.email }}</td>

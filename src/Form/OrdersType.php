@@ -16,7 +16,7 @@ class OrdersType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('products')
+
             ->add('name')
             ->add('surname')
             ->add('email')
@@ -24,8 +24,9 @@ class OrdersType extends AbstractType
             ->add('street')
             ->add('city')
             ->add('zipcode')
-            ->add('totalPrice')
-            ->add('status')
+
+
+            ->add('comment')
 
             ->add('country', EntityType::class, [
                 'class' => Country::class,

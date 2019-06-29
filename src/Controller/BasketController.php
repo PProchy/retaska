@@ -33,6 +33,12 @@ class BasketController extends AbstractController
 
         $basket[$product->getId()]['amount']++;
 
+
+        $amount = $basket[$product->getId()] ['amount'];
+        $price = $product->getPrice();
+        $total = $price * $amount;
+        $kosik[$product->getId()]['total'] = $total;
+
         $session->set('basket',$basket);
 
 
@@ -48,6 +54,11 @@ class BasketController extends AbstractController
 
         $basket[$product->getId()]['amount']--;
 
+        $amount = $basket[$product->getId()] ['amount'];
+        $price = $product->getPrice();
+        $total = $price * $amount;
+        $kosik[$product->getId()]['total'] = $total;
+
         $session->set('basket',$basket);
 
 
@@ -60,6 +71,10 @@ class BasketController extends AbstractController
     public function add(Product $product, SessionInterface $session)
     {
 
+        $amount = 1;
+        $price = $product->getPrice();
+        $total = $price * $amount;
+
         $basket = $session->get('basket',[]);
 
 
@@ -67,7 +82,8 @@ class BasketController extends AbstractController
             'id' => $product->getId(),
             'name' => $product->getName(),
             'price' => $product->getPrice(),
-            'amount' => 1
+            'amount' => 1,
+            'total' => $total,
         ];
 
         $session->set('basket',$basket);
