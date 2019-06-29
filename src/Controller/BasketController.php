@@ -18,7 +18,8 @@ class BasketController extends AbstractController
 
         return $this->render('basket/index.html.twig', [
 
-            'basket' => $basket
+            'basket' => $basket,
+
         ]);
     }
 
