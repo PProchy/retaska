@@ -42,7 +42,7 @@ class OrdersController extends AbstractController
 
 
         $totalprice = array_sum(array_column($productsOrder, 'total'));
-        
+
         $order->setTotalPrice($totalprice);
 
         if ($form->isSubmitted() && $form->isValid()) {

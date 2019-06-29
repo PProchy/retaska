@@ -3,7 +3,7 @@
 {% block title %}Orders{% endblock %}
 
 {% block body %}
-    <h1>Orders</h1>
+    <h1 class="text-center">Objednávka</h1>
 
     <table class="table">
         <tbody>
@@ -13,7 +13,8 @@
             </tr>
             <tr>
                 <th>Products</th>
-                <td>{{ order.products ? order.products|join(', ') : '' }}</td>
+                <td>{% for item in order.products %}
+                        {{ item.name }}, {{ item.amount }} ks{% endfor %}</td>
             </tr>
             <tr>
                 <th>Name</th>
@@ -42,6 +43,18 @@
             <tr>
                 <th>Zipcode</th>
                 <td>{{ order.zipcode }}</td>
+            </tr>
+            <tr>
+                <th>Země</th>
+                <td>{{ order.country.name }}</td>
+            </tr>
+            <tr>
+                <th>Doprava</th>
+                <td>{{ order.transport.name }}</td>
+            </tr>
+            <tr>
+                <th>Platba</th>
+                <td>{{ order.payment.name }}</td>
             </tr>
             <tr>
                 <th>TotalPrice</th>

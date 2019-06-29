@@ -25,9 +25,6 @@ class OrdersType extends AbstractType
             ->add('city')
             ->add('zipcode')
 
-
-            ->add('comment')
-
             ->add('country', EntityType::class, [
                 'class' => Country::class,
                 'choice_label' => 'name',
@@ -41,7 +38,6 @@ class OrdersType extends AbstractType
                     return ['data-transport' => $transport->getPrice()];
                 }
 
-
             ])
 
             ->add('payment', EntityType::class, [
@@ -51,9 +47,9 @@ class OrdersType extends AbstractType
                 'choice_attr' => function(Payment $payment) {
                     return ['data-payment' => $payment->getPrice()];
                 }
-
-
             ])
+
+            ->add('comment')
 
         ;
     }

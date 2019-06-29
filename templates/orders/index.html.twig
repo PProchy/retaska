@@ -17,6 +17,9 @@
                 <th>Street</th>
                 <th>City</th>
                 <th>Zipcode</th>
+                <th>Country</th>
+                <th>Transport</th>
+                <th>Payment</th>
                 <th>TotalPrice</th>
                 <th>Status</th>
                 <th>actions</th>
@@ -27,8 +30,7 @@
             <tr>
                 <td>{{ order.id }}</td>
                 <td>{% for item in order.products %}
-                        {{ item.name }}, {{ item.amount }} ks<br>
-                    {% endfor %}</td>
+                        {{ item.name }}, {{ item.amount }} ks{% endfor %}</td>
                 <td>{{ order.name }}</td>
                 <td>{{ order.surname }}</td>
                 <td>{{ order.email }}</td>
@@ -36,6 +38,9 @@
                 <td>{{ order.street }}</td>
                 <td>{{ order.city }}</td>
                 <td>{{ order.zipcode }}</td>
+                <td>{{ order.country.name }}</td>
+                <td>{{ order.transport.name }}</td>
+                <td>{{ order.payment.name }}</td>
                 <td>{{ order.totalPrice }}</td>
                 <td>{{ order.status ? 'Yes' : 'No' }}</td>
                 <td>
