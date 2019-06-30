@@ -24,6 +24,9 @@ class ProductRepository extends ServiceEntityRepository
         return $this->findBy(['category'=>[$kategorie]]);
     }
 
+
+
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

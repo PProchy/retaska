@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Product;
+use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Category;
+use Symfony\Component\HttpFoundation\Request;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +36,9 @@ class ShowProductsController extends AbstractController
             'category' => $categoryRepository->findAll()
         ]);
     }
+
+
+
 
 
 }
