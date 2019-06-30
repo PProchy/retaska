@@ -49,10 +49,10 @@
 
             </ul>
 
-            <form>
+            <form action="{{ path('search') }}" method="get">
                 <div class="form-inline my-2 my-lg-0 mr-3">
-                    <input type="text"
-                           name="q"
+                    <input type="search"
+                           name="search"
                            class="form-control"
                            placeholder="Hledej..."
                     >
@@ -64,7 +64,6 @@
                     </div>
                 </div>
             </form>
-
 
 
             <span class="my-auto mx-1">777 888 999</span>
